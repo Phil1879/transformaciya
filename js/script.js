@@ -33,3 +33,52 @@
                 });
             });
         });
+// Инициализация кликов по сертификатам
+document.addEventListener('DOMContentLoaded', function() {
+  const certificates = Array.from(document.querySelectorAll('.certificate-img'));
+  let currentIndex = 0;
+  const modalImg = document.getElementById('modalCertificateImg');
+  const modal = new bootstrap.Modal(document.getElementById('certificateModal'));
+
+  // Функция обновления изображения
+  function updateModalImage(index) {
+    if (index >= 0 && index < certificates.length) {
+      currentIndex = index;
+      modalImg.src = certificates[currentIndex].src;
+      modalImg.style.maxHeight = '90vh';
+      modalImg.style.maxWidth = '95vw';
+    }
+  }
+
+  // Обработчики кликов по сертификатам
+  certificates.forEach((cert, index) => {
+    cert.addEventListener('click', function() {
+      currentIndex = index;
+      updateModalImage(currentIndex);
+      modal.show();
+    });
+  });
+
+  // Кнопка "Назад"
+  document.getElementById('prevCert').addEventListener('click', function(e) {
+    e.stopPropagation();
+    updateModalImage(currentIndex - 1);
+  });
+
+  // Кнопка "Вперед"
+  document.getElementById('nextCert').addEventListener('click', function(e) {
+    e.stopPropagation();
+    updateModalImage(currentIndex + 1);
+  });
+
+  // Обработчики клавиатуры
+  document.addEventListener('keydown', function(e) {
+    if (modal._element.classList.contains('show')) {
+      if (e.key === 'ArrowLeft') {
+        updateModalImage(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        updateModalImage(currentIndex + 1);
+      }
+    }
+  });
+});

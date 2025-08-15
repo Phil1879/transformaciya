@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/stile.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.min.css"/>
+    
 </head>
 <body>
     <!-- Навигация -->
@@ -44,7 +46,7 @@
     <!-- Герой-секция -->
     <section id="hero" class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-start">
                 <div class="col-lg-7">
                     <h1 class="mb-4">Одна година, яка може змінити життя вашої родини</h1>
                     <h2 class="h4 mb-4 text-secondary">Як всього за одну консультацію зрозуміти, як вирвати дитину з лап залежності, навіть якщо ви не знаєте з чого почати</h2>
@@ -145,7 +147,7 @@
             </div>
             <div class="col-lg-6 text-center">
                 <img src="img\mom.jpg" alt="Успішна історія" class="img-fluid rounded shadow mb-3" style="max-height: 400px; width: auto;">
-                <p class="fst-italic">"Допомога психолога змінила життя нашої сім'ї"</p>
+                <p class="fst-italic">"Я хочу сказати тим, хто ще бореться або боїться зробити перший крок:<br>Не чекайте дна. Шанс є і він починається з дії.<br>Мій син повернувся з темряви і ваша дитина теж зможе!"</p>
             </div>
         </div>
     </div>
@@ -283,33 +285,83 @@
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">Хто я?</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Психолог" class="img-fluid rounded shadow">
-                </div>
-                <div class="col-lg-8">
-                    <h3 class="mb-3">Анна Петренко, психолог-нарколог</h3>
-                    <p>Я спеціалізуюсь на допомозі підліткам з наркотичною залежністю та їх сім'ям вже понад 12 років. Моя мета - не просто допомогти позбутися залежності, а повернути сім'ї радість спілкування та взаєморозуміння.</p>
-                    <p>Мій підхід базується на поєднанні когнітивно-поведінкової терапії, сімейної системної терапії та мотиваційного консультування. Це дозволяє працювати не лише з симптомами, а й з причинами виникнення залежності.</p>
-                    
-                    <h4 class="mt-4">Кваліфікація та сертифікати</h4>
+            <div class="row align-items-start">
+                <div class="col-lg-6">
+                    <p>Моє ім’я - Павло Казар'ян, я дипломований психолог-психотерапевт, маю дві вищі освіти та аспірантуру за плечима, спеціаліст з клінічної псіхології, майстер НЛП, коуч та професійний поліграфолог, автор психологічних книг, тренінгів та курсів.</p>
+                    <p>Я власник кількох успішних бізнес-проєктів та благодійних напрямків, зокрема мережі реабілітаційних центрів «Джерело».</p>
+                    <p>Але так було не завжди: 23 роки тому в мене був досвід вживання наркотиків і я не знав, як вийти з безумства, у яке сам себе завів. Мені вдалося зібрати себе по шматках, а понад 18 років тому я розробив і запатентував програму, яка допомагає залежним ставати чесними та світлими людьми. Згодом, я створив програму роботи з батьками залежних.</p>
+                    <h5 class="mt-4">Тож, навіщо мені це потрібно?</h5>
                     <ul>
-                        <li>Магістр психології, Київський національний університет імені Тараса Шевченка</li>
-                        <li>Сертифікований спеціаліст з наркології та психотерапії залежностей</li>
-                        <li>Член Всеукраїнської асоціації психотерапевтів</li>
-                        <li>Учасник міжнародних конференцій з проблем залежностей у підлітків</li>
-                        <li>Автор наукових публікацій з психології залежної поведінки</li>
+                        <li>Це моя місія та покликання - допомагати людям вийти з того болота, у якому колись був я.</li>
+                        <li>Я постійно працюю над собою та дослідним шляхом вдосконалюю свою програму.</li>
+                        <li>Хочу увійти в історію нашої країни як провідний професіонал у роботі з хімічно - залежними людьми та питаннями співзалежності. </li>
                     </ul>
                     
-                    <div class="d-flex mt-4">
-                        <img src="https://via.placeholder.com/80" alt="Сертификат" class="img-thumbnail me-2">
-                        <img src="https://via.placeholder.com/80" alt="Сертификат" class="img-thumbnail me-2">
-                        <img src="https://via.placeholder.com/80" alt="Сертификат" class="img-thumbnail">
+                </div>
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="photo-container px-3 py-2">
+                    <img src="img\Pavel.jpeg" alt="Психолог" class="img-fluid rounded shadow">
+                    </div>
+                    <div class="photo-caption text-center">
+                        <p class="fst-italic">Життя не закінчується там, де стало боляче.<br>Зробіть свій вибір прямо зараз.</p>
+                        <p class="fst-italic">Кожній людіні потрібен шанс виправити помилки та повернутися до нормального жіття!</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+        <!-- Секция Сертификаты -->
+<!-- Секция сертификатов -->
+<section id="certificates" class="section">
+  <div class="container">
+    <h2 class="section-title mb-4">Сертифікати та досягнення</h2>
+    
+    <div class="certificates-container">
+      <div class="certificates-scroller">
+        <!-- Добавьте все ваши сертификаты здесь -->
+        <!-- Все 19 сертификатов -->
+        <img src="img/2.jpg" alt="Сертифікат 1" class="certificate-img">
+        <img src="img/3.jpg" alt="Сертифікат 2" class="certificate-img">
+        <img src="img/5.jpg" alt="Сертифікат 4" class="certificate-img">
+        <img src="img/6.jpg" alt="Сертифікат 5" class="certificate-img">
+        <img src="img/7.jpg" alt="Сертифікат 6" class="certificate-img">
+        <img src="img/8.jpg" alt="Сертифікат 7" class="certificate-img">
+        <img src="img/9.jpg" alt="Сертифікат 8" class="certificate-img">
+        <img src="img/10.jpg" alt="Сертифікат 9" class="certificate-img">
+        <img src="img/11.jpg" alt="Сертифікат 10" class="certificate-img">
+        <img src="img/12.jpg" alt="Сертифікат 11" class="certificate-img">
+        <img src="img/13.jpg" alt="Сертифікат 12" class="certificate-img">
+        <img src="img/14.jpg" alt="Сертифікат 13" class="certificate-img">
+        <img src="img/15.jpg" alt="Сертифікат 14" class="certificate-img">
+        <img src="img/16.jpg" alt="Сертифікат 15" class="certificate-img">
+        <img src="img/17.jpg" alt="Сертифікат 16" class="certificate-img">
+        <img src="img/18.jpg" alt="Сертифікат 17" class="certificate-img">
+        <img src="img/19.jpg" alt="Сертифікат 18" class="certificate-img">
+        <img src="img/20.jpg" alt="Сертифікат 19" class="certificate-img">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- МОДАЛьное окно -->
+<div class="modal fade" id="certificateModal" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen-md-down">
+    <div class="modal-content border-0 bg-transparent">
+      <div class="modal-body d-flex align-items-center justify-content-center p-0 vh-100 position-relative">
+        <img id="modalCertificateImg" src="" alt="" class="h-auto mw-100" style="max-height: 90vh;">
+        
+        <!-- Кнопки навигации -->
+        <button class="btn btn-secondary position-absolute start-0 top-50 translate-middle-y ms-3" id="prevCert">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="btn btn-secondary position-absolute end-0 top-50 translate-middle-y me-3" id="nextCert">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+      <button type="button" class="btn-close position-absolute top-0 end-0 m-3 bg-white" data-bs-dismiss="modal"></button>
+    </div>
+  </div>
+</div>
 
     <!-- Призыв к действию -->
     <section id="cta" class="cta-section">

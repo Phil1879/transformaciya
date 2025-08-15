@@ -147,6 +147,7 @@
             border: 3px solid var(--secondary);
         }
         
+        /* История мамы */
         .success-story {
             background-color: var(--accent-light);
             padding: 60px 0;
@@ -171,11 +172,11 @@
             font-style: italic;
         }
         .story-text br {
-    content: "";
-    display: block;
-    margin-top: -0.3em;
-    line-height: 0.1;
-}
+            content: "";
+            display: block;
+            margin-top: -0.3em;
+            line-height: 0.1;
+        }
         
         .process-step {
             position: relative;
@@ -364,4 +365,79 @@
             opacity: 1;
             transform: translateY(0);
         }
-   
+
+/* Контейнер для сертификатов */
+.certificates-container {
+  width: 100%;
+  height: 400px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  position: relative;
+}
+
+.certificates-scroller {
+  display: inline-block;
+  height: 100%;
+  padding: 0 20px;
+}
+
+/* Стили для изображений сертификатов */
+.certificate-img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  margin-right: 15px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.certificate-img:last-child {
+  margin-right: 0;
+}
+
+.certificate-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Скрываем scrollbar в некоторых браузерах */
+.certificates-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.certificates-container::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 3px;
+}
+
+/* Стили для кнопок навигации */
+#prevCert, #nextCert {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+#prevCert:hover, #nextCert:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  #prevCert, #nextCert {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}
