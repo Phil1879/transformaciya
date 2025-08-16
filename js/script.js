@@ -82,3 +82,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+document.addEventListener('DOMContentLoaded', function() {
+  const firstBlock = document.querySelector('section:first-of-type');
+  const callBtn = document.getElementById('floatingCallBtn');
+  const heroSection = document.getElementById('hero');
+  const formSection = document.getElementById('callFormSection');
+  
+  // Intersection Observer для показа кнопки
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        callBtn.classList.remove('d-none');
+        callBtn.classList.add('d-block');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  if (firstBlock) {
+    observer.observe(firstBlock);
+  }
+  
+  // Обработчик клика по кнопке
+  callBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Добавляем класс для затемнения
+    heroSection.classList.add('form-focus');
+    
+    // Прокручиваем к форме с плавным скроллом
+    formSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+    
+    // Через 5 секунд убираем затемнение
+    setTimeout(function() {
+      heroSection.classList.remove('form-focus');
+    }, 700);
+  });
+});

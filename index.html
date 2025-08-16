@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/stile.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.min.css"/>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- Навигация -->
@@ -61,8 +61,8 @@
                     <button class="btn btn-outline-secondary btn-lg">Записатися</button>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block">
-    <div class="bg-white p-4 rounded shadow">
-        <!-- Первый блок - форма -->
+    <div id="callFormSection" class="bg-white p-4 rounded shadow">
+        <!-- Первый блок. ID убран с формы и перемещен на строку выше id="callFormSection" -->
         <div class="mb-4">
             <h3 class="mb-4">Замовте дзвінок</h3>
             <form>
@@ -114,6 +114,21 @@
             </div>
         </div>
     </section>
+
+    <!-- КНОПКА ЗВОНКа -->
+<a href="#callFormSection" id="floatingCallBtn" class="d-none">
+  <div class="position-fixed bottom-0 end-0 mb-5 me-5 animate-pulse2" style="z-index: 1000">
+    <div class="vidualsatun">
+      <div class="campakesad">
+        <div class="vebusines"></div>
+        <div class="nigkugas">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="dsacin">Заказать звонок</div>
+      </div>
+    </div>
+  </div>
+</a>
 
    <!-- История успеха -->
 <section id="success" class="success-story">
