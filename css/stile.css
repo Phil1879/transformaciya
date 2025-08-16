@@ -587,3 +587,7 @@ body.form-focus {
   transform: scale(1.02);
   box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
+
+#floatingCallBtn {
+  display: block !important; /* Перебивает любые другие стили */
+}

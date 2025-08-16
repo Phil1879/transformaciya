@@ -88,20 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const heroSection = document.getElementById('hero');
   const formSection = document.getElementById('callFormSection');
   
-  // Intersection Observer для показа кнопки
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        callBtn.classList.remove('d-none');
-        callBtn.classList.add('d-block');
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  if (firstBlock) {
-    observer.observe(firstBlock);
-  }
-  
   // Обработчик клика по кнопке
   callBtn.addEventListener('click', function(e) {
     e.preventDefault();
