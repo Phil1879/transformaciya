@@ -113,26 +113,54 @@ document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
   
   if (contactForm) {
-    const sendEmail = (e) => {
-      e.preventDefault(); // Предотвращаем перезагрузку страницы
+    const sendFormData = async (e) => {
+      e.preventDefault();
 
-      emailjs.sendForm(
-        'service_g8mlnuh',        // Ваш service ID
-        'template_z6p1pyq',       // Ваш template ID
-        contactForm,              // Передаем саму форму
-        'q-Lu0XZi-EpE_dtR0'       // Ваш public key
-      ).then(
-        () => {
-          alert('Ваша заявка успішно відправлена, впродовж дня вам затетефонує наш консультант!');
+      // 1. Подготовка данных формы
+      const formData = new FormData(contactForm);
+      const formDataObject = Object.fromEntries(formData.entries());
+
+      // 2. Сначала пробуем отправить на вебхук n8n
+      try {
+        const n8nResponse = await fetch('https://n8n.psyhodoc.xyz/webhook/89aee7fe-b532-405b-a76e-d7c563e8d0ef', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formDataObject)
+        });
+
+        if (n8nResponse.ok) {
+          // Успешная отправка на вебхук
+          alert('Ваша заявка успешно отправлена! Мы свяжемся с вами в течение дня.');
           contactForm.reset();
-        },
-        (error) => {
-          console.error("Ошибка отправки:", error);
-          alert('Ошибка при отправке. Попробуйте еще раз.');
+          return; // Прекращаем выполнение
         }
-      );
+        
+        // Если ответ не OK, переходим к EmailJS
+        console.error("n8n Webhook Error:", await n8nResponse.text());
+      } catch (n8nError) {
+        console.error("n8n Fetch Error:", n8nError);
+      }
+
+      // 3. Если вебхук не сработал - пробуем EmailJS
+      try {
+        await emailjs.send(
+          'service_g8mlnuh',
+          'template_z6p1pyq',
+          {
+            name: formDataObject.name,
+            phone: formDataObject.phone
+          },
+          'q-Lu0XZi-EpE_dtR0'
+        );
+        
+        alert('Ваша заявка отправлена через резервный канал! Мы свяжемся с вами в течение дня.');
+        contactForm.reset();
+      } catch (emailJSError) {
+        console.error("EmailJS Error:", emailJSError);
+        alert('Ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами другим способом.');
+      }
     };
 
-    contactForm.addEventListener('submit', sendEmail);
+    contactForm.addEventListener('submit', sendFormData);
   }
 });
