@@ -107,3 +107,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 700);
   });
 });
+
+// Форма EmailJS
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  
+  if (contactForm) {
+    const sendEmail = (e) => {
+      e.preventDefault(); // Предотвращаем перезагрузку страницы
+
+      emailjs.sendForm(
+        'service_g8mlnuh',        // Ваш service ID
+        'template_z6p1pyq',       // Ваш template ID
+        contactForm,              // Передаем саму форму
+        'q-Lu0XZi-EpE_dtR0'       // Ваш public key
+      ).then(
+        () => {
+          alert('Ваша заявка успішно відправлена, впродовж дня вам затетефонує наш консультант!');
+          contactForm.reset();
+        },
+        (error) => {
+          console.error("Ошибка отправки:", error);
+          alert('Ошибка при отправке. Попробуйте еще раз.');
+        }
+      );
+    };
+
+    contactForm.addEventListener('submit', sendEmail);
+  }
+});
