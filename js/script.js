@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const modalImg = document.getElementById('modalCertificateImg');
   const modal = new bootstrap.Modal(document.getElementById('certificateModal'));
 
-  // Функция обновления изображения
   function updateModalImage(index) {
     if (index >= 0 && index < certificates.length) {
       currentIndex = index;
@@ -50,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Обработчики кликов по сертификатам
   certificates.forEach((cert, index) => {
     cert.addEventListener('click', function() {
       currentIndex = index;
@@ -59,19 +57,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Кнопка "Назад"
   document.getElementById('prevCert').addEventListener('click', function(e) {
     e.stopPropagation();
     updateModalImage(currentIndex - 1);
   });
 
-  // Кнопка "Вперед"
   document.getElementById('nextCert').addEventListener('click', function(e) {
     e.stopPropagation();
     updateModalImage(currentIndex + 1);
   });
 
-  // Обработчики клавиатуры
   document.addEventListener('keydown', function(e) {
     if (modal._element.classList.contains('show')) {
       if (e.key === 'ArrowLeft') {
@@ -82,33 +77,93 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Скрол к форме
 document.addEventListener('DOMContentLoaded', function() {
   const firstBlock = document.querySelector('section:first-of-type');
   const callBtn = document.getElementById('floatingCallBtn');
   const heroSection = document.getElementById('hero');
   const formSection = document.getElementById('callFormSection');
   
-  // Обработчик клика по кнопке
   callBtn.addEventListener('click', function(e) {
     e.preventDefault();
     
-    // Добавляем класс для затемнения
     heroSection.classList.add('form-focus');
     
-    // Прокручиваем к форме с плавным скроллом
     formSection.scrollIntoView({
       behavior: 'smooth',
       block: 'center'
     });
     
-    // Через 5 секунд убираем затемнение
     setTimeout(function() {
       heroSection.classList.remove('form-focus');
     }, 700);
   });
 });
 
-// Форма EmailJS
+// Проверка номеров
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneInput = document.querySelector("#phone");
+    const hiddenInput = document.querySelector("#full_phone");
+    
+    // Инициализация плагина
+    const iti = window.intlTelInput(phoneInput, {
+        initialCountry: "ua",
+        preferredCountries: ["ua", "pl", "de"],
+        separateDialCode: true, // Код страны отдельно
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.9/js/utils.js",
+        autoPlaceholder: "off", // Отключаем авто-плейсхолдер
+        nationalMode: true // Начинаем в национальном формате
+    });
+
+    // Очищаем поле при инициализации
+    phoneInput.value = '';
+
+    // Блокировка нечислового ввода
+    phoneInput.addEventListener('keydown', function(e) {
+        // Разрешаем: цифры, управляющие клавиши
+        if ((e.keyCode >= 48 && e.keyCode <= 57) || // Цифры
+            (e.keyCode >= 96 && e.keyCode <= 105) || // Numpad
+            e.keyCode === 8 || // Backspace
+            e.keyCode === 9 || // Tab
+            e.keyCode === 37 || // Стрелка влево
+            e.keyCode === 39) { // Стрелка вправо
+            return;
+        }
+        e.preventDefault();
+    });
+
+    // Ограничение длины ввода
+    phoneInput.addEventListener('input', function() {
+        // Оставляем только цифры
+        this.value = this.value.replace(/\D/g, '');
+        
+        // Ограничиваем длину (15 цифр)
+        if (this.value.length > 15) {
+            this.value = this.value.substring(0, 15);
+        }
+    });
+
+    // Валидация перед отправкой
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        phoneInput.classList.remove('is-invalid');
+        
+        // Получаем полный номер с кодом страны
+        const fullNumber = '+' + iti.getSelectedCountryData().dialCode + phoneInput.value;
+        
+        // Проверяем валидность
+        if (!phoneInput.value || !iti.isValidNumber(fullNumber)) {
+            e.preventDefault();
+            phoneInput.classList.add('is-invalid');
+            phoneInput.focus();
+            return;
+        }
+        
+        // Сохраняем полный номер в скрытое поле
+        hiddenInput.value = fullNumber;
+    });
+});
+// Форма EmailJS и вебхук
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
   
@@ -116,11 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const sendFormData = async (e) => {
       e.preventDefault();
 
-      // 1. Подготовка данных формы
       const formData = new FormData(contactForm);
       const formDataObject = Object.fromEntries(formData.entries());
 
-      // 2. Сначала пробуем отправить на вебхук n8n
       try {
         const n8nResponse = await fetch('https://n8n.psyhodoc.xyz/webhook/89aee7fe-b532-405b-a76e-d7c563e8d0ef', {
           method: 'POST',
@@ -129,26 +182,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (n8nResponse.ok) {
-          // Успешная отправка на вебхук
           alert('Ваша заявка успешно отправлена! Мы свяжемся с вами в течение дня.');
           contactForm.reset();
-          return; // Прекращаем выполнение
+          return; 
         }
         
-        // Если ответ не OK, переходим к EmailJS
         console.error("n8n Webhook Error:", await n8nResponse.text());
       } catch (n8nError) {
         console.error("n8n Fetch Error:", n8nError);
       }
 
-      // 3. Если вебхук не сработал - пробуем EmailJS
       try {
         await emailjs.send(
           'service_g8mlnuh',
           'template_z6p1pyq',
           {
             name: formDataObject.name,
-            phone: formDataObject.phone
+            phone: formDataObject.full_phone || formDataObject.phone
           },
           'q-Lu0XZi-EpE_dtR0'
         );

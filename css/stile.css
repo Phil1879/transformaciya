@@ -657,3 +657,31 @@ body.form-focus {
         transform: translateY(-2px);
         transition: all 0.2s ease;
     }
+/* Валидация номеров */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+.invalid-feedback {
+    display: none;
+    color: #dc3545;
+    font-size: 0.875em;
+}
+.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+#phone {
+    user-select: none;
+    -webkit-user-select: none;
+}
+#phone.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.iti__selected-flag {
+    padding: 0 15px 0 10px;
+}
+/* Стили для выпадающего списка стран */
+.iti__flag-container {
+    padding: 0 10px;
+}
