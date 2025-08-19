@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const headerImage = document.getElementById('adaptive-header-image');
+    
+    function updateHeaderImage() {
+        if (window.innerWidth <= 820) {
+            headerImage.src = 'img\\form302.jpg';
+        } else {
+            headerImage.src = 'img\\form30.jpg';
+        }
+    }
+    
+    // Вызываем при загрузке
+    updateHeaderImage();
+    
+    // Вызываем при изменении размера окна
+    window.addEventListener('resize', updateHeaderImage);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
   const challengeForm = document.getElementById('challengeForm');
   
   if (challengeForm) {
@@ -34,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
           'template_abcv3ka',
           {
             name: formDataObject.name,
-            phone: formDataObject.phone,
             telegram: formDataObject.telegram,
             email: formDataObject.email,
             alcoholFrequency: formDataObject.alcoholFrequency,
