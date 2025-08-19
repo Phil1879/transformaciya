@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дякуємо за реєстрацію | 30 дней без алкоголя</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Иконки -->
+    <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="icons/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="icons/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="icons/favicon-48x48.png" type="image/png" sizes="48x48">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <style>
+        body {
+            background-color: #DDDCDC;
+            color: #202124;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 800px;
+            flex: 1;
+        }
+        .header-image {
+            background-color: #f8f9fa;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .section {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .thank-you-icon {
+            font-size: 4rem;
+            color: #535252;
+            margin-bottom: 20px;
+        }
+        .thank-you-title {
+            color: #535252;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .thank-you-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .highlight {
+            color: #535252;
+            font-weight: 600;
+        }
+        .next-steps {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        .next-steps-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #535252;
+        }
+        .next-steps-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .next-steps-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .next-steps-list li:before {
+            content: "•";
+            color: #535252;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .btn-return {
+            background-color: #535252;
+            border-color: #535252;
+            color: white;
+            padding: 10px 25px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+        .btn-return:hover {
+            background-color: #3d3d3d;
+            border-color: #3d3d3d;
+            color: white;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+        .social-links a {
+            color: #535252;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #3d3d3d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <!-- Изображение -->
+        <div class="header-image">
+            <img src="img\form30.jpg" alt="30 дней без алкоголя">
+        </div>
+
+        <!-- Блок благодарности -->
+        <div class="section">
+            <div class="thank-you-icon">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <h1 class="thank-you-title">Дякуємо за реєстрацію на челендж!</h1>
+            
+            <p class="thank-you-text">
+                Ваша заявка успішно прийнята. Ми раді, що ви робите цей важливий крок на шляху до усвідомленого життя.
+            </p>
+            
+            <p class="thank-you-text">
+                Челендж <span class="highlight">"30 днів без алкоголю"</span> стартує <span class="highlight">1 вересня</span>. 
+                Найближчим часом ви отримаєте запрошення  до нашого чату на електронну пошту, вказану при реєстрації, 
+                або повідомлення у Telegram.
+            </p>
+            
+            <p class="thank-you-text">
+                Учасники челенджу отримають доступ до щоденного чату підтримки, матеріалів та зустрічей, 
+                які допоможуть пройти цей шлях усвідомлено та ефективно.
+            </p>
+
+            <p class="thank-you-text mt-4">
+                Якщо у вас виникли питання або ви не отримали листа протягом доби, 
+                будь ласка, зв'яжіться з нами через соціальні мережі або напишіть на пошту 
+                <span class="highlight">info@example.com</span>.
+            </p>
+            
+        </div>
+
+        <!-- Футер -->
+        <div class="footer">
+            <div class="social-links mb-3">
+                <a href="#" target="_blank"><i class="bi bi-globe"></i></a>
+                <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="#" target="_blank"><i class="bi bi-telegram"></i></a>
+                <a href="#" target="_blank"><i class="bi bi-youtube"></i></a>
+            </div>
+            <p>© 2023 30 днів без алкоголю. Всі права захищені.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
