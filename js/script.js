@@ -1,38 +1,60 @@
-        // Анимация при скролле
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('appear');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Переключение языка
-            const langButtons = document.querySelectorAll('.lang-btn');
-            langButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    langButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-            
-            // Плавная прокрутка
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация календаря для даты
+    flatpickr("#date", {
+        minDate: "today",
+        locale: "uk",
+        dateFormat: "d.m.Y",
+        altInput: true,
+        altFormat: "j F Y",
+    });
+    
+    // Инициализация выбора времени
+    flatpickr("#time", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true,
+        minuteIncrement: 30,
+        locale: "uk",
+        defaultHour: new Date().getHours(),
+        defaultMinute: new Date().getMinutes(),
+    });
+    });
+            // Анимация при скролле
+document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Переключение языка
+    const langButtons = document.querySelectorAll('.lang-btn');
+    langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // Плавная прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
         });
+    });
+});
 // Инициализация кликов по сертификатам
 document.addEventListener('DOMContentLoaded', function() {
   const certificates = Array.from(document.querySelectorAll('.certificate-img'));
@@ -198,7 +220,9 @@ document.addEventListener('DOMContentLoaded', function() {
           'template_z6p1pyq',
           {
             name: formDataObject.name,
-            phone: formDataObject.full_phone || formDataObject.phone
+            phone: formDataObject.full_phone || formDataObject.phone,
+            date:formDataObject.date,
+            time:formDataObject.time,
           },
           'q-Lu0XZi-EpE_dtR0'
         );

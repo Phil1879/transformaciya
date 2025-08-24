@@ -12,12 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.9/css/intlTelInput.css">
         <!-- Иконки -->
-<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="icons/favicon-16x16.png" type="image/png" sizes="16x16">
-<link rel="icon" href="icons/favicon-32x32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="icons/favicon-48x48.png" type="image/png" sizes="48x48">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" sizes="180x180">
-<link rel="manifest" href="icons/site.webmanifest">
+    <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="icons/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="icons/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="icons/favicon-48x48.png" type="image/png" sizes="48x48">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="icons/site.webmanifest">
+
+    <!-- Підключення Flatpickr та його локалізації -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -83,6 +86,18 @@ src="https://www.facebook.com/tr?id=1083831223935542&ev=PageView&noscript=1"
                     <div class="invalid-feedback">Будь ласка, введіть коректний номер телефону</div>
                     <input type="hidden" id="full_phone" name="full_phone">
                 </div>
+                <!-- Поле для вибору дати та часу -->
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="date" class="form-label">Дата дзвінка:</label>
+        <input type="text" id="date" name="date" class="form-control" placeholder="Оберіть дату" required autocomplete="off">
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="time" class="form-label">Час дзвінка:</label>
+        <input type="text" id="time" name="time" class="form-control" placeholder="Оберіть час" required autocomplete="off">
+    </div>
+</div>
+
                 <button type="submit" class="btn btn-accent w-100">Надіслати</button>
             </form>
         </div>
@@ -115,8 +130,7 @@ src="https://www.facebook.com/tr?id=1083831223935542&ev=PageView&noscript=1"
                 <i class="bi bi-clock fs-4 me-3 text-accent"></i>
                 <div>
                     <div class="fw-bold">Години роботи</div>
-                    <div>Пн-Пт: 9:00 - 20:00</div>
-                    <div>Сб: 10:00 - 16:00</div>
+                    <div>Пн-ВС: 8:00 - 21:00</div>
                 </div>
             </div>
         </div>
@@ -525,6 +539,8 @@ src="https://www.facebook.com/tr?id=1083831223935542&ev=PageView&noscript=1"
 </footer>
 
     <!-- скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/uk.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.9/js/intlTelInput.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
