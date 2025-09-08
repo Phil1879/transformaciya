@@ -505,6 +505,16 @@ footer {
   border-radius: 100px;
 }
 
+/* .vidualsatun {
+  position: fixed; 
+  bottom: 20px;    
+  right: 20px;     
+  transform: none; 
+  animation: animate_pulse2 2s infinite; 
+  border-radius: 100px;
+  z-index: 9999;   
+} */
+
 .campakesad, .vebusines, .nigkugas {
   position: absolute;
   width: 70px;
